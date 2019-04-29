@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:47:07 by adoyle            #+#    #+#             */
-/*   Updated: 2019/04/26 18:23:38 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/04/29 16:51:26 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 t_img	initimg(t_img *img)
 {
 	char	*s;
+	char	*m;
 	
 	img->mlx = mlx_init();
 	img->img = mlx_new_image(img->mlx, 1000, 1000);
-	img->win = mlx_new_window(img->mlx, 1000, 1000, "42");
+	img->imgm = mlx_new_image(img->mlx, 199, 1000);
+	img->win = mlx_new_window(img->mlx, 1200, 1000, "42");
 	s = mlx_get_data_addr(img->img, &(img->bts), &(img->size_line), &(img->endian));
+	m = mlx_get_data_addr(img->imgm, &(img->bts), &(img->size_line), &(img->endian));
 	img->addr = (int*)s;
+	img->addrm = (int*)m;
 	return (*img);
 }
 

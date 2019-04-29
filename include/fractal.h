@@ -15,7 +15,9 @@ typedef struct s_img
 	void    *mlx;
 	void    *win;
 	void    *img;
+	void    *imgm;
 	int     *addr;
+	int     *addrm;
 	int     bts;
 	int     size_line;
 	int     endian;
@@ -29,6 +31,7 @@ typedef struct s_frct
 	float   cx;
 	float   cy;
 	float   tmp;
+	int		iter;
 }              t_frct;
 
 typedef struct s_cam
@@ -41,17 +44,20 @@ typedef struct s_cam
 	int		zoom;
 }              t_cam;
 
-typedef struct s_core
+typedef struct	s_core
 {
 	t_img	*img;
 	t_frct	*frct;
 	t_cam	*cam;
-}              t_core;
+}				t_core;
 
-t_img	initimg(t_img *img);
-void	initcore(t_core *core);
-void	mandelbrot(t_core *core);
-void	graphic(void);
+int				close_window(void *param);
+t_img			initimg(t_img *img);
+void			initcore(t_core *core);
+void			mandelbrot(t_core *core);
+void			menucolor(t_core *core);
+void			menu(t_core *core);
+void			graphic(void);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 17:51:19 by adoyle            #+#    #+#             */
-/*   Updated: 2019/04/26 19:10:48 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/04/29 18:15:17 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	mandelbrot(t_core *core)
 	i = 0;
 	while(i < 1000)
 	{
-		core->frct->cx = ((float)i - 750) / 350.0;
+		core->frct->cx = ((float)i - 550) / 250.0;
 		j = 0;
 		while (j < 1000)
 		{
-			core->frct->cy = ((float)j - 500) / 350.0;
+			core->frct->cy = ((float)j - 500) / 250.0;
 			core->frct->zx = 0.0;
 			core->frct->zy = 0.0;
 			k = 0;
-			while (k < 5000)
+			while (k < 100)
 			{
 				core->frct->tmp = core->frct->zx * core->frct->zx - core->frct->zy * core->frct->zy;
         		core->frct->zy = 2 * core->frct->zx * core->frct->zy  + core->frct->cy;
@@ -38,7 +38,7 @@ void	mandelbrot(t_core *core)
 					break;
 				k++;
 			}
-			if (k < 5000)
+			if (k < 100)
 				core->img->addr[i + (j * 1000)] = 0x4CB1F0 + k * 0x0000ff;
 			else
 				core->img->addr[i + (j * 1000)] = 0x000000;
