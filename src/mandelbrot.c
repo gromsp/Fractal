@@ -21,15 +21,15 @@ void	mandelbrot(t_core *core)
 	i = 0;
 	while(i < 1000)
 	{
-		core->frct->cx = ((float)i - 550) / 250.0;
+		core->frct->cx = ((float)i - 550) / core->cam->step;
 		j = 0;
 		while (j < 1000)
 		{
-			core->frct->cy = ((float)j - 500) / 250.0;
+			core->frct->cy = ((float)j - 500) / core->cam->step;
 			core->frct->zx = 0.0;
 			core->frct->zy = 0.0;
 			k = 0;
-			while (k < 100)
+			while (k < 50 * core->cam->zoom)
 			{
 				core->frct->tmp = core->frct->zx * core->frct->zx - core->frct->zy * core->frct->zy;
         		core->frct->zy = 2 * core->frct->zx * core->frct->zy  + core->frct->cy;
@@ -38,7 +38,7 @@ void	mandelbrot(t_core *core)
 					break;
 				k++;
 			}
-			if (k < 100)
+			if (k < 50 * core->cam->zoom)
 				core->img->addr[i + (j * 1000)] = 0x4CB1F0 + k * 0x0000ff;
 			else
 				core->img->addr[i + (j * 1000)] = 0x000000;

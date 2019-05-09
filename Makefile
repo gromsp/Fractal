@@ -2,16 +2,18 @@
 NAME=fractol
 
 CFLAGS=#-Wall -Wextra -Werror
-FFLAGS= -framework OpenGL -framework AppKit
+#FFLAGS= -framework OpenGL -framework AppKit
+FFLAGS= -lXext -lX11 -lm
 
 SRC_PATH=./src
 INC_PATH=./include
-MLX_PATH=./minilibx_macos
-MLX_INC_PATH=/usr/local/include
+MLX_PATH=./minilibx
+#MLX_PATH=./minilibx_macos
+MLX_INC_PATH=/usr/X11/include
 FT_PATH=./libft
 BIN_PATH=./bin
 
-SRC= fractal.c graphcore.c mandelbrot.c init.c
+SRC= fractal.c graphcore.c mandelbrot.c init.c hooks.c
 OBJ:= $(addprefix $(BIN_PATH)/,$(SRC:.c=.o))
 
 .PHONY: all clean fclean re

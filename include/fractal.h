@@ -41,7 +41,7 @@ typedef struct s_cam
 	float	x1;
 	float	y1;
 	float	step;
-	int		zoom;
+	float	zoom;
 }              t_cam;
 
 typedef struct	s_core
@@ -51,12 +51,16 @@ typedef struct	s_core
 	t_cam	*cam;
 }				t_core;
 
+
 int				close_window(void *param);
+void			initman(t_core *core);
+int				control(int press_key, void *param);
 t_img			initimg(t_img *img);
 void			initcore(t_core *core);
 void			mandelbrot(t_core *core);
 void			menucolor(t_core *core);
 void			menu(t_core *core);
+void			draw(t_core *core);
 void			graphic(void);
 
 

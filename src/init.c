@@ -12,6 +12,17 @@
 
 #include "../include/fractal.h"
 
+void	initman(t_core *core)
+{
+	core->frct->frct = 'm';
+	core->cam->x0 = -2;
+	core->cam->x1 = 2;
+	core->cam->y0 = -2;
+	core->cam->y1 = 2;
+	core->cam->zoom = 1;
+	core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+}
+
 t_img	initimg(t_img *img)
 {
 	char	*s;

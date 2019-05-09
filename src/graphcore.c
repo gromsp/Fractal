@@ -36,10 +36,20 @@ void		graphic(void)
 	if ((core = (t_core *)ft_memalloc(sizeof(t_core))) == NULL)
 		exit(0);	
 	initcore(core);
+	initman(core);
 	mandelbrot(core);
 	menucolor(core);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);
 	menu(core);
+	mlx_key_hook(core->img->win, control, (void*)(core));
 	mlx_loop(core->img->mlx);
+}
+
+void		draw(t_core *core)
+{
+	if (core->frct->frct == 'm')
+		mandelbrot(core);
+	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
+	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);
 }
