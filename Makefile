@@ -13,7 +13,7 @@ MLX_INC_PATH=/usr/X11/include
 FT_PATH=./libft
 BIN_PATH=./bin
 
-SRC= fractal.c graphcore.c mandelbrot.c init.c hooks.c
+SRC= fractal.c graphcore.c mandelbrot.c init.c hooks.c julia.c
 OBJ:= $(addprefix $(BIN_PATH)/,$(SRC:.c=.o))
 
 .PHONY: all clean fclean re

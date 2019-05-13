@@ -21,6 +21,8 @@ void	initman(t_core *core)
 	core->cam->y1 = 2;
 	core->cam->zoom = 1;
 	core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+	core->cam->cx = 500;
+	core->cam->cy = 500;
 }
 
 t_img	initimg(t_img *img)

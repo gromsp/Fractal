@@ -37,7 +37,7 @@ void		graphic(void)
 		exit(0);	
 	initcore(core);
 	initman(core);
-	mandelbrot(core);
+	julia(core);
 	menucolor(core);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);

@@ -12,13 +12,6 @@
 
 #include "../include/fractal.h"
 
-int			close_window(void *param)
-{
-	if (param != NULL)
-		exit(-2);
-	return (0);
-}
-
 void	pick(int key, t_core *core)
 {
 	if (key == 12)
@@ -50,6 +43,19 @@ void	zoom(int key, t_core *core)
 	draw(core);
 }
 
+void	arrow(int key, t_core *core)
+{
+	if (key == 1) //vniz
+		core->cam->cy += 100;
+	if (key == 1) //vverh
+		core->cam->cy -= 100;
+	if (key == 1) //vpravo
+		core->cam->cx += 100;
+	if (key == 1) //vlevo
+		core->cam->cx -= 100;	
+	draw(core);
+}
+
 int		control(int press_key, void *param)
 {
 	t_core	*core;
@@ -62,5 +68,6 @@ int		control(int press_key, void *param)
 		pick(press_key, core);
 	if (press_key == 69 || press_key == 78)
 		zoom(press_key, core);
-		
+	if (press_key == 1 || press_key == 1 || press_key == 1 || press_key == 1)
+		arrow(press_key, core);		
 }
