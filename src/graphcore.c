@@ -26,22 +26,23 @@ void		menucolor(t_core *core)
 
 void		menu(t_core *core)
 {
+	menucolor(core);
 	mlx_string_put(core->img->mlx, core->img->win, 1, 1, 0x00FF9632, "Menu");
 }
 
-void		graphic(void)
+void		graphic(char *av)
 {
 	t_core	*core;
 
 	if ((core = (t_core *)ft_memalloc(sizeof(t_core))) == NULL)
 		exit(0);	
 	initcore(core);
-	initman(core);
-	julia(core);
-	menucolor(core);
-	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
-	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);
+	if (av[0] == 'm')
+		initman(core);
+	if (av[0] == 'j')
+		initjul(core);
 	menu(core);
+	draw(core);
 	mlx_key_hook(core->img->win, control, (void*)(core));
 	mlx_loop(core->img->mlx);
 }
@@ -50,6 +51,8 @@ void		draw(t_core *core)
 {
 	if (core->frct->frct == 'm')
 		mandelbrot(core);
+	if (core->frct->frct == 'j')
+		julia(core);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);
 }

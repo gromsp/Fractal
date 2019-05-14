@@ -12,6 +12,19 @@
 
 #include "../include/fractal.h"
 
+void	initjul(t_core *core)
+{
+	core->frct->frct = 'j';
+	core->cam->x0 = -2;
+	core->cam->x1 = 2;
+	core->cam->y0 = -2;
+	core->cam->y1 = 2;
+	core->cam->zoom = 1;
+	core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+	core->cam->cx = 500;
+	core->cam->cy = 500;
+}
+
 void	initman(t_core *core)
 {
 	core->frct->frct = 'm';

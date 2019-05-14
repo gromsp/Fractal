@@ -54,6 +54,7 @@ typedef struct	s_core
 }				t_core;
 
 
+void			initjul(t_core *core);
 void			initman(t_core *core);
 int				control(int press_key, void *param);
 t_img			initimg(t_img *img);
@@ -63,7 +64,7 @@ void			menucolor(t_core *core);
 void			menu(t_core *core);
 void			julia(t_core *core);
 void			draw(t_core *core);
-void			graphic(void);
+void			graphic(char *av);
 
 
 #endif

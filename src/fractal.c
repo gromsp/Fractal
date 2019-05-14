@@ -17,10 +17,10 @@ int		main(int ag, char **av)
 	int i;
 
 	i = 0;
-	if (ag > 1)
+	if (ag != 2)
 	{
-		write (1, "Error, no input file\n", 21);
+		write (1, "Please, enter fractol:\n-mandelbrot\n-julia\n-tretiy\n", 50);
 		return (-1);
 	}
-	graphic();	
+	graphic(av[1]);	
 }
