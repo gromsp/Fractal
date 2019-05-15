@@ -44,6 +44,7 @@ void		graphic(char *av)
 	menu(core);
 	draw(core);
 	mlx_key_hook(core->img->win, control, (void*)(core));
+	mlx_mouse_hook(core->img->win, controlms, (void*)(core));
 	mlx_loop(core->img->mlx);
 }
 

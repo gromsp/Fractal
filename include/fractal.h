@@ -57,6 +57,7 @@ typedef struct	s_core
 void			initjul(t_core *core);
 void			initman(t_core *core);
 int				control(int press_key, void *param);
+int				controlms(int key, int x, int y, void *param);
 t_img			initimg(t_img *img);
 void			initcore(t_core *core);
 void			mandelbrot(t_core *core);

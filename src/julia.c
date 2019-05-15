@@ -29,7 +29,7 @@ void	julia(t_core *core)
 			core->frct->zx = core->frct->cx;
 			core->frct->zy = core->frct->cy;
 			k = 0;
-			while (k < 500 * core->cam->zoom)
+			while (k < 300 * core->cam->zoom)
 			{
 				core->frct->tmp = core->frct->zx * core->frct->zx - core->frct->zy * core->frct->zy;
         		core->frct->zy = 2 * core->frct->zx * core->frct->zy + 0.1889;
@@ -38,7 +38,7 @@ void	julia(t_core *core)
 					break;
 				k++;
 			}
-			if (k < 500 * core->cam->zoom)
+			if (k < 300 * core->cam->zoom)
 				core->img->addr[i + (j * 1000)] = 0x4CB1F0 + k * 0x0000ff;
 			else
 				core->img->addr[i + (j * 1000)] = 0x000000;

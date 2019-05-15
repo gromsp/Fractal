@@ -21,16 +21,17 @@ void	pick(int key, t_core *core)
 
 void	zoom(int key, t_core *core)
 {
-	if (key == 69)
+	if (key == 69 || key == 4)
 	{
 		core->cam->zoom = core->cam->zoom * 2;
 		core->cam->x0 /= 2;
 		core->cam->x1 /= 2;
 		core->cam->y0 /= 2;
 		core->cam->y1 /= 2;
-		core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+		core->cam->step *= 2;
+		printf("step - %f", core->cam->step);
 	}
-	if (key == 78)
+	if (key == 78 || key == 5)
 	{
 		if (core->cam->zoom > 1)
 			core->cam->zoom = core->cam->zoom / 2;
@@ -38,7 +39,7 @@ void	zoom(int key, t_core *core)
 		core->cam->x1 *= 2;
 		core->cam->y0 *= 2;
 		core->cam->y1 *= 2;
-		core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+		core->cam->step /= 2;
 	}
 	draw(core);
 }
@@ -61,7 +62,7 @@ int		control(int press_key, void *param)
 	t_core	*core;
 
 	core = (t_core*)param;
-	// printf("%d\n", press_key); 65421
+	printf("%d\n", press_key); //65421
 	if (press_key == 53)
 		exit (-2);
 	if (press_key == 12 || press_key == 13 || press_key == 14)
@@ -70,4 +71,14 @@ int		control(int press_key, void *param)
 		zoom(press_key, core);
 	if (press_key == 1 || press_key == 1 || press_key == 1 || press_key == 1)
 		arrow(press_key, core);		
+}
+
+int		controlms(int key, int x, int y, void *param)
+{
+	t_core	*core;
+
+	core = (t_core*)param;
+	printf("%d x-%d y-%d\n", key, x, y); //65421
+	if (key == 4 || key == 5)
+		zoom(key, core);
 }
