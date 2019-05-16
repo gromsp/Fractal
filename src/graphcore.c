@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 17:15:01 by adoyle            #+#    #+#             */
-/*   Updated: 2019/04/29 18:39:09 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/16 17:43:58 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		menucolor(t_core *core)
 void		menu(t_core *core)
 {
 	menucolor(core);
-	mlx_string_put(core->img->mlx, core->img->win, 1, 1, 0x00FF9632, "Menu");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 1, 0x00FF9632, "Menu");
 }
 
 void		graphic(char *av)
@@ -45,6 +45,7 @@ void		graphic(char *av)
 	draw(core);
 	mlx_key_hook(core->img->win, control, (void*)(core));
 	mlx_mouse_hook(core->img->win, controlms, (void*)(core));
+	mlx_hook(core->img->win, 6, 0, mouse_move, (void*)(core));
 	mlx_loop(core->img->mlx);
 }
 

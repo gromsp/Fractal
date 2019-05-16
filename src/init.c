@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:47:07 by adoyle            #+#    #+#             */
-/*   Updated: 2019/04/29 16:51:26 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/16 17:53:46 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ void	initjul(t_core *core)
 	core->cam->y0 = -2;
 	core->cam->y1 = 2;
 	core->cam->zoom = 1;
-	core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+	core->cam->step = 250;
 	core->cam->cx = 500;
 	core->cam->cy = 500;
+	core->frct->jm = 1;
+	core->frct->cx1 = 0.8;
+	core->frct->cy1 = 0.156;
 }
 
 void	initman(t_core *core)
@@ -33,7 +36,7 @@ void	initman(t_core *core)
 	core->cam->y0 = -2;
 	core->cam->y1 = 2;
 	core->cam->zoom = 1;
-	core->cam->step = 1000 / (abs(core->cam->x0) + abs(core->cam->x1));
+	core->cam->step = 250;
 	core->cam->cx = 500;
 	core->cam->cy = 500;
 }

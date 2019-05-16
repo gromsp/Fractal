@@ -26,24 +26,27 @@ typedef struct s_img
 typedef struct s_frct
 {
 	char    frct;
-	float   zx;
-	float   zy;
-	float   cx;
-	float   cy;
-	float   tmp;
+	int		jm;
+	long double   zx;
+	long double   zy;
+	long double   cx;
+	long double   cy;
+	long double   cx1;
+	long double   cy1;
+	long double   tmp;
 	int		iter;
 }              t_frct;
 
 typedef struct s_cam
 {
-	float	x0;
-	float	y0;
-	float	x1;
-	float	y1;
-	float	step;
-	float	zoom;
-	float	cx;
-	float	cy;
+	double	x0;
+	double	y0;
+	double	x1;
+	double	y1;
+	double	step; //zoom
+	double	zoom; //iter
+	int	cx;
+	int	cy;
 }              t_cam;
 
 typedef struct	s_core
@@ -57,6 +60,7 @@ typedef struct	s_core
 void			initjul(t_core *core);
 void			initman(t_core *core);
 int				control(int press_key, void *param);
+int				mouse_move(int x, int y, void *param);
 int				controlms(int key, int x, int y, void *param);
 t_img			initimg(t_img *img);
 void			initcore(t_core *core);

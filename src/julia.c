@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 17:51:19 by adoyle            #+#    #+#             */
-/*   Updated: 2019/04/29 18:15:17 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/16 18:11:22 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,25 @@ void	julia(t_core *core)
 	i = 0;
 	while(i < 1000)
 	{
-		core->frct->cx = ((float)i - core->cam->cx) / core->cam->step;
+		core->frct->cx = ((long double)i - core->cam->cx) / core->cam->step;
 		j = 0;
 		while (j < 1000)
 		{
-			core->frct->cy = ((float)j - core->cam->cy) / core->cam->step;
+			core->frct->cy = ((long double)j - core->cam->cy) / core->cam->step;
 			core->frct->zx = core->frct->cx;
 			core->frct->zy = core->frct->cy;
 			k = 0;
-			while (k < 300 * core->cam->zoom)
+			while (k < 50 * core->cam->zoom)
 			{
 				core->frct->tmp = core->frct->zx * core->frct->zx - core->frct->zy * core->frct->zy;
-        		core->frct->zy = 2 * core->frct->zx * core->frct->zy + 0.1889;
-				core->frct->zx = core->frct->tmp + (-0.7269);
+        		core->frct->zy = 2 * core->frct->zx * core->frct->zy + core->frct->cx1;
+				core->frct->zx = core->frct->tmp - core->frct->cy1;
 				if (core->frct->zy*core->frct->zy + core->frct->zx*core->frct->zx > 4)
 					break;
 				k++;
 			}
-			if (k < 300 * core->cam->zoom)
-				core->img->addr[i + (j * 1000)] = 0x4CB1F0 + k * 0x0000ff;
+			if (k < 50 * core->cam->zoom)
+				core->img->addr[i + (j * 1000)] = 0x9CB1F0 + k * 0x0fff00;
 			else
 				core->img->addr[i + (j * 1000)] = 0x000000;
 			j++;			
