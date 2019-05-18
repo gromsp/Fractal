@@ -18,6 +18,11 @@ void	pick(int key, t_core *core)
 		initman(core);
 	if (key == 13)
 		initjul(core);
+	if (key == 14)
+	{
+		initman(core);
+		core->frct->frct = 'b';
+	}
 	draw(core);
 }
 

@@ -41,6 +41,11 @@ void		graphic(char *av)
 		initman(core);
 	if (av[0] == 'j')
 		initjul(core);
+	if (av[0] == 'b')
+	{
+		initman(core);
+		core->frct->frct = 'b';
+	}
 	menu(core);
 	draw(core);
 	mlx_key_hook(core->img->win, control, (void*)(core));
@@ -55,6 +60,8 @@ void		draw(t_core *core)
 		mandelbrot(core);
 	if (core->frct->frct == 'j')
 		julia(core);
+	if (core->frct->frct == 'b')
+		burnship(core);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);
 }

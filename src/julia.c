@@ -39,7 +39,7 @@ void	julia(t_core *core)
 				k++;
 			}
 			if (k < 50 * core->cam->zoom)
-				core->img->addr[i + (j * 1000)] = 0x9CB1F0 + k * 0x0fff00;
+				core->img->addr[i + (j * 1000)] = 0x100045 + k * 0x040a01;
 			else
 				core->img->addr[i + (j * 1000)] = 0x000000;
 			j++;			
