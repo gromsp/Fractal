@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:47:07 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/28 18:37:47 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:53:20 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	initjul(t_core *core)
 	core->frct->jm = 1;
 	core->frct->cx1 = 0.8;
 	core->frct->cy1 = 0.156;
+	core->movey = 0;
+	core->movex = 0;
 }
 
 void	initman(t_core *core)
@@ -40,6 +42,8 @@ void	initman(t_core *core)
 	core->cam->cx = 500;
 	core->cam->cy = 500;
 	core->color = 0x100045;
+	core->movey = 0;
+	core->movex = 0;
 }
 
 t_img	initimg(t_img *img)

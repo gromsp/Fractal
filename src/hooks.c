@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:20:30 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/28 18:37:42 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/28 19:52:24 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	pick(int key, t_core *core)
 	{
 		initman(core);
 		core->frct->frct = 'b';
+	}
+	if (key == 15)
+	{
+		initman(core);
+		core->frct->frct = 't';
 	}
 	draw(core);
 }
@@ -67,13 +72,14 @@ void	zoom(int key, t_core *core)
 void	arrow(int key, t_core *core)
 {
 	if (key == 125) //vniz
-		core->cam->cy += 100;
+		//core->cam->cy += 100;
+		core->movey -= (100 / core->cam->step);
 	if (key == 126) //vverh
-		core->cam->cy -= 100;
+		core->movey += (100 / core->cam->step);
 	if (key == 124) //vpravo
-		core->cam->cx += 100;
+		core->movex -= (100 / core->cam->step);
 	if (key == 123) //vlevo
-		core->cam->cx -= 100;	
+		core->movex += (100 / core->cam->step);	
 	draw(core);
 }
 
@@ -92,7 +98,7 @@ int		control(int press_key, void *param)
 	core = (t_core*)param;
 	if (press_key == 53)
 		exit (-2);
-	if (press_key == 12 || press_key == 13 || press_key == 14)
+	if (press_key == 12 || press_key == 13 || press_key == 14 || press_key == 15)
 		pick(press_key, core);
 	if (press_key == 69 || press_key == 78)
 		zoom(press_key, core);

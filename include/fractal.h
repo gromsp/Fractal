@@ -56,6 +56,8 @@ typedef struct	s_core
 	t_cam	*cam;
 	int		color;
 	int		color1;
+	double	movex;
+	double	movey;
 }				t_core;
 
 int				colors(t_core *core, int k);
@@ -66,6 +68,7 @@ int				mouse_move(int x, int y, void *param);
 int				controlms(int key, int x, int y, void *param);
 t_img			initimg(t_img *img);
 void			initcore(t_core *core);
+void			tricorn(t_core *core);
 void			burnship(t_core *core);
 void			mandelbrot(t_core *core);
 void			menucolor(t_core *core);
