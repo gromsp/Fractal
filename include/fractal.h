@@ -54,9 +54,11 @@ typedef struct	s_core
 	t_img	*img;
 	t_frct	*frct;
 	t_cam	*cam;
+	int		color;
+	int		color1;
 }				t_core;
 
-
+int				colors(t_core *core, int k);
 void			initjul(t_core *core);
 void			initman(t_core *core);
 int				control(int press_key, void *param);

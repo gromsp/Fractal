@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 17:51:19 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/16 16:50:50 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/28 18:15:19 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	mandelbrot(t_core *core)
 				k++;
 			}
 			if (k < 20 * core->cam->zoom)
-				core->img->addr[i + (j * 1000)] = 0x100045 + k * 0x040a01;
+				core->img->addr[i + (j * 1000)] = colors(core, k);
 			else
 				core->img->addr[i + (j * 1000)] = 0x000000;
 			j++;			

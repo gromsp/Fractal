@@ -6,11 +6,24 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 18:20:30 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/16 18:34:51 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/28 18:37:42 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractal.h"
+
+void	colorswitch(int key, t_core *core)
+{
+	if (key == 18)
+		core->color1 = 0x040a01;
+	if (key == 19)
+		core->color1 = 0x110000;
+	if (key == 20)
+		core->color1 = 0x000a0a;
+	if (key == 21)
+		core->color1 = 0x025677799;
+	draw(core);
+}
 
 void	pick(int key, t_core *core)
 {
@@ -89,6 +102,8 @@ int		control(int press_key, void *param)
 		iter(press_key, core);
 	if (press_key == 46)
 		mouseswitch(core);
+	if (press_key == 18 || press_key == 19 || press_key == 20 || press_key == 21)
+		colorswitch(press_key, core);
 	return (0);
 }
 

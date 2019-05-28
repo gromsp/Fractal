@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:47:07 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/16 17:53:46 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/28 18:37:47 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	initman(t_core *core)
 	core->cam->step = 250;
 	core->cam->cx = 500;
 	core->cam->cy = 500;
+	core->color = 0x100045;
 }
 
 t_img	initimg(t_img *img)

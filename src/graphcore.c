@@ -6,28 +6,45 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 17:15:01 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/16 17:43:58 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/05/28 18:37:33 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractal.h"
 
-void		menucolor(t_core *core)
+void		menu(t_core *core)
 {
 	int i;
 
 	i = 0;
 	while(i < 199 * 1000)
 	{
-		core->img->addrm[i] = 0xA8A8A8;
+		core->img->addrm[i] = 0x303040;
 		i++;
 	}
 }
 
-void		menu(t_core *core)
+void		text(t_core *core)
 {
-	menucolor(core);
-	mlx_string_put(core->img->mlx, core->img->win, 10, 1, 0x00FF9632, "Menu");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 10, 0xAF5555, "Menu:");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 30, 0xAF5555, "Switch Fractal:");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 50, 0xAF5555, "q - Mandelbrot");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 70, 0xAF5555, "w - Julia");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 90, 0xAF5555, "e - Burningship");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 100, 0xAF5555, "__________________");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 120, 0xAF5555, "Controls:");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 140, 0xAF5555, "Move: < > ^ v");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 160, 0xAF5555, "Zoom: + -");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 180, 0xAF5555, "Zoom: wheel mouse");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 200, 0xAF5555, "Iteration: * /");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 210, 0xAF5555, "__________________");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 230, 0xAF5555, "Mouse mode: m");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 240, 0xAF5555, "__________________");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 260, 0xAF5555, "Colors:");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 280, 0xAF5555, "1: Green");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 300, 0xAF5555, "2: Red");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 320, 0xAF5555, "3: Blue");
+	mlx_string_put(core->img->mlx, core->img->win, 10, 340, 0xAF5555, "4: Psyho");
 }
 
 void		graphic(char *av)
@@ -37,6 +54,7 @@ void		graphic(char *av)
 	if ((core = (t_core *)ft_memalloc(sizeof(t_core))) == NULL)
 		exit(0);	
 	initcore(core);
+	core->color1 = 0x040a01;
 	if (av[0] == 'm')
 		initman(core);
 	if (av[0] == 'j')
@@ -46,7 +64,6 @@ void		graphic(char *av)
 		initman(core);
 		core->frct->frct = 'b';
 	}
-	menu(core);
 	draw(core);
 	mlx_key_hook(core->img->win, control, (void*)(core));
 	mlx_mouse_hook(core->img->win, controlms, (void*)(core));
@@ -56,12 +73,15 @@ void		graphic(char *av)
 
 void		draw(t_core *core)
 {
+	mlx_clear_window(core->img->mlx, core->img->win);
 	if (core->frct->frct == 'm')
 		mandelbrot(core);
 	if (core->frct->frct == 'j')
 		julia(core);
 	if (core->frct->frct == 'b')
 		burnship(core);
+	menu(core);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->img, 200, 0);
 	mlx_put_image_to_window(core->img->mlx, core->img->win, core->img->imgm, 0, 0);
+	text(core);
 }
