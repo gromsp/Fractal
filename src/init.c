@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:47:07 by adoyle            #+#    #+#             */
-/*   Updated: 2019/06/04 19:21:38 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/06/04 20:11:34 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	initman(t_core *core)
 	core->cam->step = 250;
 	core->cam->cx = 500;
 	core->cam->cy = 500;
-	core->color = 0x100045;
 	core->movey = 0;
 	core->movex = 0;
 }
@@ -80,6 +79,7 @@ void	initcore(t_core *core)
 	if ((cam = (t_cam *)ft_memalloc(sizeof(t_cam))) == NULL)
 		exit(0);
 	core->cam = cam;
+	core->color = 0x100045;
 	core->color1 = 0x040a01;
 	core->movex = 0;
 	core->movey = 0;
