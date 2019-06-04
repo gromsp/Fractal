@@ -6,7 +6,7 @@
 /*   By: adoyle <adoyle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 17:51:19 by adoyle            #+#    #+#             */
-/*   Updated: 2019/05/28 20:04:59 by adoyle           ###   ########.fr       */
+/*   Updated: 2019/06/04 19:40:50 by adoyle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ int		colors(t_core *core, int k)
 	return (k);
 }
 
-void	burnshippart1(t_core *core, int k, int x, int y)
+int		burnshippart1(t_core *core, int k, long double x, long double y)
 {
 	while (k < 20 + (5 * core->cam->zoom))
 	{
 		core->frct->tmp = core->frct->zx * core->frct->zx -
-			core->frct->zy * core->frct->zy + x;
-		core->frct->zy = fabsl(2 * core->frct->zx *
-			core->frct->zy) + y;
+		core->frct->zy * core->frct->zy + x;
+		core->frct->zy = fabsl(2 * core->frct->zx * core->frct->zy) + y;
 		core->frct->zx = fabsl(core->frct->tmp);
 		if (core->frct->zy * core->frct->zy +
 			core->frct->zx * core->frct->zx > 4)
 			break ;
 		k++;
 	}
+	return (k);
 }
 
 void	colorship(t_core *core, int i, int j, int k)
@@ -62,7 +62,7 @@ void	burnship(t_core *core)
 			core->frct->zx = x;
 			core->frct->zy = y;
 			k = 0;
-			burnshippart1(core, k, x, y);
+			k = burnshippart1(core, k, x, y);
 			colorship(core, i, j, k);
 			j++;
 		}
